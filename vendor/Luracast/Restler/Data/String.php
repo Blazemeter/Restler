@@ -18,7 +18,7 @@ class String
      *
      * @param string $haystack
      * @param string $needle
-     * @param bool   $caseSensitive
+     * @param bool $caseSensitive
      *
      * @return bool
      */
@@ -75,10 +75,21 @@ class String
         return
             ucwords(
                 preg_replace(
-                    array('/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/', '/(_)/'),
-                    array(' $0', ' $0', ' '),
+                    array('/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/', '/([_-])/', '/[^a-zA-Z0-9\s]|\s\s+/'),
+                    array(' $0', ' $0', ' ', ' '),
                     $name
                 )
             );
+    }
+
+    /**
+     * Convert given string to be used as a slug or css class
+     *
+     * @param string $name
+     * @return string
+     */
+    public static function slug($name)
+    {
+        return preg_replace('/[^a-zA-Z]+/', '-', strtolower(strip_tags($name)));
     }
 } 

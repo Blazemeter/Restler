@@ -15,7 +15,7 @@ use Luracast\Restler\Data\Validator;
  * @copyright  2010 Luracast
  * @license    http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link       http://luracast.com/products/restler/
- * @version    3.0.0rc5
+ * @version    3.0.0rc6
  */
 class Defaults
 {
@@ -30,6 +30,11 @@ class Defaults
      * \Luracast\Restler\iCache the cache class to be used
      */
     public static $cacheClass = 'Luracast\\Restler\\HumanReadableCache';
+
+    /**
+     * @var Allow ignoring HTTP_ACCEPT so response set by format only
+     */
+    public static $ignoreHttpAccept = false;
 
     /**
      * @var string full path of the directory where all the generated files will
